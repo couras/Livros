@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Autor {
 
 	@Id
-	@Column(name="id_livro")
+	@Column(name="id_autor")
 	@GeneratedValue
 	private Long idAutor;
 	

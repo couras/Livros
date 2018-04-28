@@ -25,9 +25,8 @@ public class ReviewController {
 	}
 
 	@RequestMapping(PATH_REVIEW_LIST)
-	public ModelAndView livros() {
-		String titulo = "Lista de Livros";
-		List<Review> listaLivros = reviewService.listaReviews();
-		return new ModelAndView("livros/livros", "livros", listaLivros);
+	public ModelAndView reviews() {
+		List<Review> listaReviews = reviewService.listaReviews();
+		return new ModelAndView("review/reviews", "reviews", listaReviews);
 	}
 }

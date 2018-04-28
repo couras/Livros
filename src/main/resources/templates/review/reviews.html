@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de Reviews</title>
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<table class="jumbotron" style="left:0; right:0; margin-left:auto; margin-right:auto; padding:10px">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Nota</td>
+				<td>Livro</td>
+				<td>Comerntário</td>
+				<td>Editar</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${reviews.empty}">
+				<td colspan="2">Sem Reviews</td>
+			</tr>
+
+			<tr th:each="review : ${reviews}">
+				<td th:text="${review.idReview}">1</td>
+				<td th:text="${review.avaliacao}">2</td>
+				<td th:text="${review.livro.titulo}">3</td>
+				<td th:text="${review.comentario}">4</td>
+				<td><a href="#" th:href="@{'/review/'+${review.idReview}}"
+					th:text="${review.idReview}"> Nome </a></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript"
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

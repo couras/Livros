@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de Emprestimos</title>
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<table class="jumbotron" style="left:0; right:0; margin-left:auto; margin-right:auto; padding:10px">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Cliente</td>
+				<td>Livro</td>
+				<td>Editar</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${emprestimos.empty}">
+				<td colspan="2">Sem emprestimos</td>
+			</tr>
+
+			<tr th:each="emprestimo : ${emprestimos}">
+				<td th:text="${emprestimo.idEmprestimo}">1</td>
+				<td th:text="${emprestimo.usuario.userName}">1</td>
+				<td th:text="${emprestimo.livro.titulo}">2</td>
+				<td><a href="#" th:href="@{'/emprestimo/'+${emprestimo.idEmprestimo}}"
+					th:text="${emprestimo.idEmprestimo}"> Emprestimo </a></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript"
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
