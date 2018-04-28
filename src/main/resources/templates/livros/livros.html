@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Lista de Livros</title>
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<table class="jumbotron" style="left:0; right:0; margin-left:auto; margin-right:auto; padding:10px">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Título</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${livros.empty}">
+				<td colspan="2">Sem livros</td>
+			</tr>
+
+			<tr th:each="livro : ${livros}">
+				<td th:text="${livro.id}">1</td>
+				<td><a href="#" th:href="@{'/livros/'+${livro.id}}"
+					th:text="${livro.nome}"> Título </a></td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript"
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
