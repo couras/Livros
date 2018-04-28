@@ -16,7 +16,7 @@ import br.biblioteca.livros.services.LivroService;
 @RequestMapping(LivroController.PATH_LIVRO)
 public class LivroController {
 
-	public static final String  PATH_LIVRO = "/livros";
+	public static final String  PATH_LIVRO = "/livro";
 	public static final String PATH_LIVRO_LIST = "/livros";
 	
 	@Autowired

@@ -13,10 +13,6 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 
-import br.aula.model.Autor;
-import br.aula.model.Emprestimo;
-
-
 @Entity
 public class Livro {
 	
@@ -92,7 +88,7 @@ public class Livro {
 
 	@Override
 	public String toString() {
-		return "Livro [id=" + id + ", nome=" + nome + ", quantidadePaginas=" + quantidadePaginas + "]";
+		return "Livro [id=" + idLivro + ", nome=" + titulo  + "]";
 	}
 
 }
