@@ -1,8 +1,20 @@
 package br.biblioteca.livros.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
+
+import br.aula.model.Autor;
+import br.aula.model.Emprestimo;
 
 
 @Entity
@@ -10,34 +22,72 @@ public class Livro {
 	
 	@Id
 	@GeneratedValue
-	private Long id;
+	@Column(name="id_livro")
+	private Long idLivro;
 	
-	private String nome;
+	@Column(name="titulo", length=45, nullable=false)
+	private String titulo;
 	
-	private int quantidadePaginas;
+	@Column(name="foto", length=200, nullable=true)
+	private String foto;
+	
+	@Column(name="quantidade")
+	private int quantidade;
 
-	public Long getId() {
-		return id;
+	@ManyToOne
+	@JoinColumn(name="id_autor")
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	private Autor autor;
+	
+	@OneToMany(mappedBy = "livro")
+	private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
+	
+	public long getIdLivro() {
+		return idLivro;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdLivro(long idLivro) {
+		this.idLivro = idLivro;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public int getQuantidadePaginas() {
-		return quantidadePaginas;
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setQuantidadePaginas(int quantidadePaginas) {
-		this.quantidadePaginas = quantidadePaginas;
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public Autor getAutor() {
+		return autor;
+	}
+
+	public void setAutor(Autor autor) {
+		this.autor = autor;
+	}
+
+	public List<Emprestimo> getEmprestimos() {
+		return emprestimos;
+	}
+
+	public void setEmprestimos(List<Emprestimo> emprestimos) {
+		this.emprestimos = emprestimos;
 	}
 
 	@Override
