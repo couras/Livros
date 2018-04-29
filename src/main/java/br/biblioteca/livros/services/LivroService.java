@@ -11,9 +11,15 @@ import br.biblioteca.livros.repository.LivroRepository;
 @Service
 public class LivroService {
 	@Autowired
-	LivroRepository livrorepository;
+	LivroRepository livroRepository;
 	
 	public List<Livro> listaLivros() {
-		return livrorepository.findAll();
+		return livroRepository.findAll();
+	}
+	
+	public Livro salvar(Livro livro) {
+		
+		
+		return livroRepository.save(livro);
 	}
 }

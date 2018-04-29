@@ -8,26 +8,44 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
 </head>
 <body>
-	<table class="jumbotron" style="left:0; right:0; margin-left:auto; margin-right:auto; padding:10px">
-		<thead>
-			<tr>
-				<td>ID</td>
-				<td>Título</td>
-				
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:if="${livros.empty}">
-				<td colspan="2">Sem livros</td>
-			</tr>
+	<div class="container" style="max-width:350px;">
+		<div style="text-align: center">
+			<h2>
+				Lista de Livros
+			</h2>
+		</div>
+		<div class="jumbotron"
+			style="left: 0; right: 0; margin-left: auto; margin-right: auto; padding: 10px; margin-top: 20px">
+			<div class="row">
+				<div class="col-2">
+					<span>ID</span>
+				</div>
+				<div class="col-10">
+					<span>Título</span>
+				</div>
+			</div>
+			<div>
+				<div class="col-12" th:if="${livros.empty}">
+					<h2>Sem livros</h2>
+				</div>
+				<div class="row" th:each="livro : ${livros}">
+					<div class="col-2">
+						<span th:text="${livro.idLivro}">1</span>
+					</div>
+					<div class="col-10">
+						<a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
+							th:text="${livro.titulo}"> Título </a>
+					</div>
+				</div>
 
-			<tr th:each="livro : ${livros}">
-				<td th:text="${livro.idLivro}">1</td>
-				<td><a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
-					th:text="${livro.titulo}"> Título </a></td>
-			</tr>
-		</tbody>
-	</table>
+
+			</div>
+		</div>
+		<div class="footer">
+			<a href="#" th:href="@{/livro/novo}" class="btn btn-primary">Novo</a>
+		</div>
+	</div>
+	
 	<script type="text/javascript"
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>

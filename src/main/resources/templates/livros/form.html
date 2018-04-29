@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout">
+<head>
+<meta charset="UTF-8" />
+<title>Adicionar novo livro</title>
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+</head>
+<body>
+
+	<form id="livroForm" th:action="@{/livro/gravar}" method="post"
+		th:object="${livro}" action="#">
+		<div class="container" style="max-width: 450px">
+			<div style="text-align: center">
+				<h2>Cadastro de Livros</h2>
+			</div>
+			<div class="jumbotron" style="padding: 10px">
+				<div class="form-group">
+					<label for="titulo" class="control-label col-md-2">Título</label>
+					<div class="col-md-12">
+						<input type="text" th:field="*{titulo}" id="titulo" name="titulo" class="input-default" />
+					</div>
+
+				</div>
+				<div class="form-group">
+					<label for="quantidade" class="control-label col-md-2">Quantidade:</label>
+					<div class="col-md-12">
+						<input type="number" th:field="*{quantidade}" name="quantidade" class="input-default" />
+					</div>
+
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2" for="autor">Autor</label>
+					<div class="col-md-12">
+						<select th:field="*{autor}" name="autor" class="input-default">
+							<option th:each="autor : ${autores}" th:value="${autor.idAutor}"
+								th:text="${autor.nome}">Nome do autor</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-2" for="foto">Foto</label>
+					<div class="col-md-12">
+						<input type="file" name="foto" accept="image/*" th:field="*{foto}" class="input-default" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-12">
+						<input type="submit" value="gravar" class="btn btn-success" />
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</form>
+	<script type="text/javascript"
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

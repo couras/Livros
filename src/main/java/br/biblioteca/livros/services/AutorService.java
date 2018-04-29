@@ -16,4 +16,8 @@ public class AutorService {
 	public List<Autor> listaAutores() {
 		return autorRepository.findAll();
 	}
+	
+	public Autor recuperar(Long id) {
+		return autorRepository.findOne(id);
+	}
 }

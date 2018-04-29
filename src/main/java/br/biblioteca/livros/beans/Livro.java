@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,7 +18,7 @@ import org.hibernate.annotations.Cascade;
 public class Livro {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_livro")
 	private Long idLivro;
 	
@@ -38,14 +39,14 @@ public class Livro {
 	@OneToMany(mappedBy = "livro")
 	private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 	
-	public long getIdLivro() {
+	public Long getIdLivro() {
 		return idLivro;
 	}
 
-	public void setIdLivro(long idLivro) {
+	public void setIdLivro(Long idLivro) {
 		this.idLivro = idLivro;
 	}
-
+	
 	public String getTitulo() {
 		return titulo;
 	}
