@@ -20,4 +20,9 @@ public class AutorService {
 	public Autor recuperar(Long id) {
 		return autorRepository.findOne(id);
 	}
+	
+	public Autor salvar(Autor autor) {
+		autor.setIdAutor(0);
+		return autorRepository.save(autor);
+	}
 }

@@ -18,8 +18,6 @@ public class LivroService {
 	}
 	
 	public Livro salvar(Livro livro) {
-		
-		
 		return livroRepository.save(livro);
 	}
 }

@@ -1,6 +1,6 @@
-insert into autor (nome)values('Denis Couras');
-insert into autor (nome)values('Cubas');
-insert into autor (nome)values('José da silva');
+insert into autor (nome)values('Ian Sommerville');
+insert into autor (nome)values('Roger S. Pressman');
+insert into autor (nome)values('Dan Pilone');
 
 INSERT INTO  LIVRO (titulo, foto, quantidade, id_autor ) VALUES ('Use a cabeça Java','image01.jpg',300,1 );
 INSERT INTO  LIVRO (titulo, foto, quantidade, id_autor ) VALUES ('Java como programar','image01.jpg',500,2 );
