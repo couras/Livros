@@ -24,7 +24,7 @@
 				<div class="form-group">
 					<label for="titulo" class="control-label col-md-12" style="text-align: left">Título</label>
 					<div class="col-md-12">
-						<input type="text" th:field="*{titulo}" id="titulo" name="titulo" class="input-default" />
+						<input type="text" th:field="*{titulo}" id="titulo" name="titulo" class="input-default col-md-12" />
 						<span id="errorTitulo"  th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="text text-danger">Nome Error</span>
 					</div>
 
@@ -32,7 +32,7 @@
 				<div class="form-group">
 					<label for="quantidade" class="control-label col-md-12" style="text-align: left">Quantidade:</label>
 					<div class="col-md-12">
-						<input type="number" th:field="*{quantidade}" name="quantidade" class="input-default" />
+						<input type="number" th:field="*{quantidade}" name="quantidade" class="input-default col-md-12" />
 						<span  th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}" class="text text-danger">Quantidade de pagina Error</span>
 					</div>
 
@@ -40,14 +40,18 @@
 				<div class="form-group">
 					<label class="control-label col-md-12" for="autor" style="text-align: left">Autor</label>
 					<div class="col-md-12">
-						<select th:field="*{autor}" name="autor" class="input-default">
+						<select th:field="*{autor}" name="autor" class="input-default col-md-12">
 							<option th:each="autor : ${autores}" th:value="${autor.idAutor}"
 								th:text="${autor.nome}">Nome do autor</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
-					<img id="imgLivro" alt="" src="" th:if="${livro.foto}" th:src="*{foto}" style="width:200px">
+					<label class="control-label col-md-12" for="autor" style="text-align: left">Capa</label>
+					<div class="col-md-12">
+						<img id="imgLivro" alt="" src="" th:if="${livro.foto}" th:src="*{foto}" style="width:200px">
+					</div>
+					
 				</div>
 				<div class="form-group">
 					<label class="control-label col-md-12" for="capaUrl" style="text-align: left">Capa do livro</label>

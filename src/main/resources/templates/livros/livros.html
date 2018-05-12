@@ -20,8 +20,11 @@
 				<div class="col-md-2">
 					<span>ID</span>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<span>Título</span>
+				</div>
+				<div class="col-md-2">
+					<span>Autor</span>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>
@@ -42,11 +45,13 @@
 					<div class="col-md-2">
 						<span th:text="${livro.idLivro}">1</span>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<a href="#" th:href="@{'/livros/'+${livro.idLivro}}"
 							th:text="${livro.titulo}"> Título </a>
 					</div>
-					
+					<div class="col-md-2">
+						<span th:text="${livro.Autor.nome}">1</span>
+					</div>
 					<div class="col-md-2 btnGrid">
 						<a href="#" th:href="@{'/livro/alterar/'+${livro.idLivro}}" class="btn btn-primary " > Alterar </a>
 					</div>
