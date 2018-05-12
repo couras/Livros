@@ -13,10 +13,10 @@
 	<form id="autorForm" th:action="@{/autor/gravar}" method="post"
 		th:object="${autor}" action="#">
 		<div class="container" style="max-width: 450px">
-			<div style="text-align: center">
+			<div style="text-align: center" layout:fragment="content">
 				<h2>Cadastro de Autores</h2>
 			</div>
-			<div class="jumbotron" style="padding: 10px">
+			<div class="jumbotron" style="padding: 10px" layout:fragment="content">
 				<div class="form-group">
 					<label for="nome" class="control-label col-md-2">Nome</label>
 					<div class="col-md-12">

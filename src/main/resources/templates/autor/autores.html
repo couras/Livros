@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
 <head>
 <meta charset="UTF-8" />
 <title>Lista de Autores</title>
-<link rel="stylesheet" type="text/css"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+
 </head>
 <body>
-	<table class="jumbotron" style="left:0; right:0; margin-left:auto; margin-right:auto; padding:10px">
+<div class="container" style="max-width:650px;">
+	<div layout:fragment="header">
+		<h1>Lista de Autores</h1>
+	</div>
+	<table class="jumbotron table" style="left:0; right:0; margin-left:auto; margin-right:auto; padding:10px" layout:fragment="content">
 		<thead>
 			<tr>
 				<td>ID</td>
 				<td>Nome</td>
 				<td>Editar</td>
+				<td>Excluir</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,10 +29,11 @@
 				<td th:text="${autor.idAutor}">1</td>
 				<td><a href="#" th:href="@{'/autor/'+${autor.idAutor}}"
 					th:text="${autor.nome}"> Nome </a></td>
+					<td ><a href="#" th:href="@{'/autor/alterar/'+${autor.idAutor}}" class="btn btn-primary " > Alterar </a></td>
+					<td ><a href="#" th:href="@{'/autor/excluir/'+${autor.idAutor}}" class="btn btn-danger" > Excluir </a></td>
 			</tr>
 		</tbody>
 	</table>
-	<script type="text/javascript"
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	</div>
 </body>
 </html>

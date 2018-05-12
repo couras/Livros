@@ -11,8 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
+
+
 
 @Entity
 public class Livro {
@@ -22,12 +27,16 @@ public class Livro {
 	@Column(name="id_livro")
 	private Long idLivro;
 	
+	@NotNull
+	@Size(min = 2, max = 45)
 	@Column(name="titulo", length=45, nullable=false)
 	private String titulo;
 	
 	@Column(name="foto", length=200, nullable=true)
 	private String foto;
 	
+	@NotNull
+	@Min(10)
 	@Column(name="quantidade")
 	private int quantidade;
 

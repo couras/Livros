@@ -2,3 +2,13 @@
 	max-width:370px;
 	width:100%;
 }
+
+.row {
+	border-bottom: 1px solid #ccc;
+	padding-top: 11px;
+}
+
+.btnGrid {
+	margin-top: -6px;
+    margin-bottom: 4px;
+}

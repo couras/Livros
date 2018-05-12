@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
+
 <head>
 <meta charset="UTF-8" />
 <title>Adicionar novo livro</title>
-<link rel="stylesheet" type="text/css"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="../css/style.css"/>
 </head>
 <body>
 
-	<form id="livroForm" th:action="@{/livro/gravar}" method="post"
-		th:object="${livro}" action="#">
+	<nav layout:fragment="header" aria-label="breadcrumb" role="navigation">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item"><a href="#" th:href="@{/livro/livros}">Livros</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Novo Livro</li>
+	  </ol>
+	</nav>
+	
+	<div layout:fragment="content">
+		<form id="livroForm" th:action="@{/livro/gravar}" method="post" th:object="${livro}" action="#"  enctype="multipart/form-data">
+		<input type="hidden"  th:field="*{idLivro}" />
 		<div class="container" style="max-width: 450px">
-			<div style="text-align: center">
-				<h2>Cadastro de Livros</h2>
-			</div>
-			<div class="jumbotron" style="padding: 10px">
+			
+			<div style="padding: 26px" class="form-horizontal jumbotron">
 				<div class="form-group">
-					<label for="titulo" class="control-label col-md-2">Título</label>
+					<label for="titulo" class="control-label col-md-12" style="text-align: left">Título</label>
 					<div class="col-md-12">
 						<input type="text" th:field="*{titulo}" id="titulo" name="titulo" class="input-default" />
+						<span id="errorTitulo"  th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}" class="text text-danger">Nome Error</span>
 					</div>
 
 				</div>
 				<div class="form-group">
-					<label for="quantidade" class="control-label col-md-2">Quantidade:</label>
+					<label for="quantidade" class="control-label col-md-12" style="text-align: left">Quantidade:</label>
 					<div class="col-md-12">
 						<input type="number" th:field="*{quantidade}" name="quantidade" class="input-default" />
+						<span  th:if="${#fields.hasErrors('quantidade')}" th:errors="*{quantidade}" class="text text-danger">Quantidade de pagina Error</span>
 					</div>
 
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-2" for="autor">Autor</label>
+					<label class="control-label col-md-12" for="autor" style="text-align: left">Autor</label>
 					<div class="col-md-12">
 						<select th:field="*{autor}" name="autor" class="input-default">
 							<option th:each="autor : ${autores}" th:value="${autor.idAutor}"
@@ -42,9 +47,12 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-md-2" for="foto">Foto</label>
+					<img id="imgLivro" alt="" src="" th:if="${livro.foto}" th:src="*{foto}" style="width:200px">
+				</div>
+				<div class="form-group">
+					<label class="control-label col-md-12" for="capaUrl" style="text-align: left">Capa do livro</label>
 					<div class="col-md-12">
-						<input type="file" name="foto" accept="image/*" th:field="*{foto}" class="input-default" />
+						<input type="file" name="capaUrl" accept="image/*" class="input-default" id="imgUp" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -55,8 +63,8 @@
 				</div>
 			</div>
 		</div>
+		
 	</form>
-	<script type="text/javascript"
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	</div>
 </body>
 </html>

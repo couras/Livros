@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout">
 <head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
-
-<link rel="stylesheet" type="text/css"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>Biblioteca de Livros</title>
 </head>
 <body>
-	<div class="container">
-		<div class="jumbotron">
-			<h1>Olá Spring Boot</h1>
-		</div>
-
+	<h1 layout:fragment="header" style="text-align: center">
+		Biblioteca de Livros
+	</h1>
+	<div layout:fragment="content" class="container">
+	<div style="text-align:center">
+		<img th:src="@{https://nova-escola-producao.s3.amazonaws.com/DcbyH8T3DZmVmqkxpx9CE7BTV5MPxCryEeS5KzemPhzhRuuZDJGtN3TNhtsf/livros-editoracao.jpeg}" src="https://nova-escola-producao.s3.amazonaws.com/DcbyH8T3DZmVmqkxpx9CE7BTV5MPxCryEeS5KzemPhzhRuuZDJGtN3TNhtsf/livros-editoracao.jpeg" 
+		style="border-radius:100%; width: 400px; height: 400px" />
 	</div>
-
-	<script type="text/javascript"
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	</div>
 </body>
 </html>
