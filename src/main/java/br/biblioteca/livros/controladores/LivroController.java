@@ -61,22 +61,6 @@ public class LivroController {
 	public ModelAndView create(@RequestParam("capaUrl") MultipartFile capaUrl, 
 			@ModelAttribute("livro") @Valid Livro livro, BindingResult bindingResult, Model model) {	
 		
-		/*if(capaUrl.getOriginalFilename().equals("")) {
-			model.addAttribute("message", "A capa não pode ser vazia");
-			return new ModelAndView("livros/form");
-		}else {
-			if(capaUrl.getContentType().equals("image/jpeg")){
-				String webPath = fileSaver.write("uploaded-images",capaUrl);
-				livro.setFoto(webPath);
-			}else{
-				model.addAttribute("message", "Arquivo em formato errado. Permitido apenas jpg");
-				ModelAndView modelAndView = new ModelAndView("livros/form");
-				modelAndView.addObject("autores", livroService.listAutores());
-				return modelAndView;
-				
-			}
-		}*/
-
 		if (livro.getIdLivro() != null) {
 			if (capaUrl.getOriginalFilename().length() > 0) {
 				incluiCapa(capaUrl, livro, model);
@@ -104,7 +88,7 @@ public class LivroController {
 		Livro livro = this.livroService.findById(id);
 		
 		if(livro.getFoto() != null) {
-			livro.setFoto("/" + livro.getFoto());
+			livro.setFoto(livro.getFoto());
 		}
 		
 		ModelAndView md = new ModelAndView("livros/form");
@@ -127,7 +111,7 @@ public class LivroController {
 	private void incluiCapa(MultipartFile capaUrl, Livro livro, Model model) {
 		if (capaUrl.getContentType().equals("image/jpeg")) {
 			String webPath = fileSaver.write("uploaded-images", capaUrl);
-			livro.setFoto(webPath);
+			livro.setFoto("/" + webPath);
 		} else {
 			model.addAttribute("capa", "Arquivo em formato errado. Permitido apenas jpg");
 		}

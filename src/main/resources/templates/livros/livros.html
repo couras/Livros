@@ -38,7 +38,7 @@
 					<div class="col-md-2">
 					
 					
-						<img alt="" src="" th:if="${livro.foto}" th:src="@{'/' + ${livro.foto}}" style="width:100px">
+						<img alt="" src="" th:if="${livro.foto}" th:src="${livro.foto}" style="width:100px">
 						<img th:unless="${livro.foto}" th:src="@{'../img/unless.jpg'}" width="100px" />
 						
 					</div>
