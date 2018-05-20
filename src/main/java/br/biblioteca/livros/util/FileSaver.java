@@ -11,7 +11,11 @@ public class FileSaver {
 
 	public String write(String baseFolder, MultipartFile file) {
 		
-		String realPath = "D:/POS/" + baseFolder;
+		//Windows
+		//String realPath = "D:/POS/" + baseFolder;
+		
+		//Linux
+		String realPath = "/POS/" + baseFolder;
 
 		File folder = new File(realPath);
 		if(!folder.exists()){
@@ -28,7 +32,7 @@ public class FileSaver {
 	}
 
 	public String read(String basicPath) {
-		String realPath = "D:/POS/";
+		String realPath = "/POS/";
 		return realPath + basicPath;
 	}
 }
