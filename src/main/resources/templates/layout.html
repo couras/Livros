@@ -9,7 +9,7 @@
 	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
 	<link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.min.css}" />
 	<link rel="stylesheet" th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.css}" />
-	<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
 	<div class="container">
@@ -37,6 +37,7 @@
 	<script>
 			$(document).ready(function(){
 				$("#imgUp").change(function(){
+					console.log('change');
 					setImage(this);
 				});
 				
@@ -45,9 +46,10 @@
 						var reader = new FileReader();
 						
 						reader.onload = function(e) {
+							console.log('onload');
 						      $('#imgLivro').attr('src', e.target.result);
 						}
-
+						
 						reader.readAsDataURL(input.files[0]);
 					}
 				}
