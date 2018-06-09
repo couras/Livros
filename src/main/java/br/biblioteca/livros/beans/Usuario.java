@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name="USUARIO")
 public class Usuario {
@@ -25,7 +28,7 @@ public class Usuario {
 	@Column(name="email", length=45, nullable=true)
 	private String email;
 	
-	@Column(name="password", length=45, nullable=false)
+	@Column(name="password", length=500, nullable=false)
 	private String password;
 
 	@OneToMany(mappedBy="usuario")
@@ -34,6 +37,24 @@ public class Usuario {
 	@OneToMany(mappedBy="usuario")
 	private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 	
+	@OneToMany(mappedBy="usuario")
+	@Cascade(CascadeType.ALL)
+	private List<Role> roles = new ArrayList<>();
+	
+	public Usuario () {}
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	public long getIdUsuario() {
 		return idUsuario;
 	}

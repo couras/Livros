@@ -15,6 +15,9 @@ insert into usuario ( user_name, email, password) values ('denis', 'a@a.com', '8
 insert into usuario (user_name, email, password) values ('eliana', 'a@a.com', '827ccb0eea8a706c4c34a16891f84e7b');
 insert into usuario ( user_name, email, password) values ('maria', 'a@a.com', '827ccb0eea8a706c4c34a16891f84e7b');
 
+insert into role (role, id_usuario) values ('ROLE_BASIC',1);
+insert into role (role, id_usuario) values ('ROLE_ADMIN',1);
+
 insert into emprestimo ( data_emprestimo, data_devolucao, id_livro, id_usuario)values ('2018-01-01', '2018-01-10', 1, 1);
 insert into emprestimo ( data_emprestimo, data_devolucao, id_livro, id_usuario)values ('2018-01-01', NULL, 2, 2);
 insert into emprestimo ( data_emprestimo, data_devolucao, id_livro, id_usuario)values ('2018-01-01', NULL, 3, 3);
@@ -22,3 +25,4 @@ insert into emprestimo ( data_emprestimo, data_devolucao, id_livro, id_usuario)v
 insert into review (avaliacao, comentatio, id_livro, id_usuario) values (2, 'legal', 1, 1);
 insert into review (avaliacao, comentatio, id_livro, id_usuario) values (5, 'bacana', 2, 2);
 insert into review (avaliacao, comentatio, id_livro, id_usuario) values (3, 'não gostei muito', 3, 3);
+

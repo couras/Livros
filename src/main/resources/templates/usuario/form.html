@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form id="userForm" th:action="@{/user/autentication}" th:object="${userForm}" action="#" method="post">
+		<input type="text" th:field="*{username}"/><span  th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Nome Error</span><br/>
+		<input type="text" th:field="*{password}"/><span  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Nome Error</span><br/>
+		<div class="form-group">
+					<label class="control-label col-md-12" for="role" style="text-align: left">Role</label>
+					<div class="col-md-12">
+						<select th:field="*{role}" name="role" class="input-default col-md-12">
+							<option th:each="role : ${roles}" th:value="${role.id}"
+								th:text="${role.role}">Nome do Role</option>
+						</select>
+					</div>
+				</div>
+		<input type="submit" name="login" value="login" />
+	</form>
+
+</body>
+</html>
